@@ -1,0 +1,1 @@
+v1.0.0 source only. No Android SDK/Gradle build or emulator available here. Do not deploy to Pixel before emulator acceptance. Known gaps: Android 13+ notification permission UI, interactive Gmail reconnection, unverified background behavior and matching heuristics.

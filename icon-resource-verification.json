@@ -1,0 +1,68 @@
+[
+  {
+    "source": "app\\src\\main\\res\\drawable-nodpi\\ic_launcher_foreground.png",
+    "packaged": "res/drawable-nodpi-v4/ic_launcher_foreground.png",
+    "sha256": "77b7e57c36862116e5314c03960840441f164bf3c36e3b7a42e95fcd5a0dd3b4",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png",
+    "packaged": "res/mipmap-hdpi-v4/ic_launcher.png",
+    "sha256": "3b06b0b46589eda0988861aaf6fe5c6c53f761ee36ce43dc71922bf40180b8ae",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png",
+    "packaged": "res/mipmap-hdpi-v4/ic_launcher_round.png",
+    "sha256": "3b06b0b46589eda0988861aaf6fe5c6c53f761ee36ce43dc71922bf40180b8ae",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png",
+    "packaged": "res/mipmap-mdpi-v4/ic_launcher.png",
+    "sha256": "65bab1588e3f96b691c8d5a34407886de8ec7c060396299639b888b8dff6e920",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png",
+    "packaged": "res/mipmap-mdpi-v4/ic_launcher_round.png",
+    "sha256": "65bab1588e3f96b691c8d5a34407886de8ec7c060396299639b888b8dff6e920",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png",
+    "packaged": "res/mipmap-xhdpi-v4/ic_launcher.png",
+    "sha256": "7050fd111b9f65a3ba8befe3d9ac7fae2223c34c39f085ae9cb81d15cfebbcfd",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png",
+    "packaged": "res/mipmap-xhdpi-v4/ic_launcher_round.png",
+    "sha256": "7050fd111b9f65a3ba8befe3d9ac7fae2223c34c39f085ae9cb81d15cfebbcfd",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png",
+    "packaged": "res/mipmap-xxhdpi-v4/ic_launcher.png",
+    "sha256": "f68e6df343572e0cad27a3498855e6ca437f072cf5712866106b9ca882a59be2",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png",
+    "packaged": "res/mipmap-xxhdpi-v4/ic_launcher_round.png",
+    "sha256": "f68e6df343572e0cad27a3498855e6ca437f072cf5712866106b9ca882a59be2",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png",
+    "packaged": "res/mipmap-xxxhdpi-v4/ic_launcher.png",
+    "sha256": "a6eae6da7b1c1e2eb8fef834032af5eaab7e7c7e4302273a9332fa1b1951b7d8",
+    "identical": true
+  },
+  {
+    "source": "app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png",
+    "packaged": "res/mipmap-xxxhdpi-v4/ic_launcher_round.png",
+    "sha256": "a6eae6da7b1c1e2eb8fef834032af5eaab7e7c7e4302273a9332fa1b1951b7d8",
+    "identical": true
+  }
+]

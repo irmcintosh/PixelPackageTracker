@@ -1,0 +1,17 @@
+{
+  "jvm": {
+    "tests": 158,
+    "failures": 0
+  },
+  "instrumentation": {
+    "total": 166,
+    "passed": 164,
+    "skipped": 2,
+    "failures": 0
+  },
+  "build": "successful",
+  "schemaVersion": 12,
+  "physicalDevice": "not tested",
+  "liveGmail": "not tested",
+  "emulatorDataPreservation": "not certified; earlier UTP uninstall_after_test=true"
+}

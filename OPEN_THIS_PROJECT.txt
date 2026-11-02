@@ -1,0 +1,1 @@
+Open PixelTracker_v0.5.0-dev9.3 in Android Studio.
