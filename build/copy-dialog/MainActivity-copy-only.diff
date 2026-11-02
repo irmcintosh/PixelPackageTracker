@@ -1,0 +1,93 @@
+--- before
+
++++ after
+
+@@ -1681,5 +1681,8 @@
+
+       if(legacy.any { it.archived == archived }) item { Text("Earlier records (preserved)", style = MaterialTheme.typography.titleMedium) }
+       items(legacy.filter { it.archived == archived }, key = { "legacy${it.id}" }) { pkg -> ElevatedCard { Column(Modifier.fillMaxWidth().padding(14.dp)) {
+-       Text(pkg.name, style = MaterialTheme.typography.titleMedium); Text("${pkg.marketplace} · ${pkg.orderStatus}"); Text(pkg.trackingNumber.ifBlank { "No tracking number" })
++       Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
++        Text(pkg.name, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
++        CopyDetailsButton("Copy order details", legacyCopyFields(pkg))
++       }; Text("${pkg.marketplace} · ${pkg.orderStatus}"); Text(pkg.trackingNumber.ifBlank { "No tracking number" })
+        Row { if(pkg.orderUrl.startsWith("https://")) TextButton(onClick = { launchUrl(context, pkg.orderUrl) }) { Text("View Order") }; if(pkg.trackingUrl.startsWith("https://")) TextButton(onClick = { launchUrl(context, pkg.trackingUrl) }) { Text("View Tracking") } }
+        TextButton(onClick = { vm.legacyArchive(pkg, !archived) }) { Text(if(archived) "Restore" else "Archive") }
+@@ -1958,8 +1961,10 @@
+
+     Text(dateTimeText(order.lastSyncedAt), style = MaterialTheme.typography.labelSmall)
+    }
++   CopyDetailsButton("Copy order details", orderCopyFields(order, shipments, numbers, products,
++    formatDate = { dateText(it) }, formatTime = { dateTimeText(it) },
++    orderDateSuffix = if(changes.firstOrNull { it.field == "Placed date" }?.newValue?.endsWith(APPROXIMATE_DATE_SUFFIX) == true) APPROXIMATE_DATE_SUFFIX else ""))
+   }
+   Row(verticalAlignment = Alignment.CenterVertically) {
+    Text("${order.marketplace} · #${order.orderNumber}", style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+-   CopyButton("Order number", order.orderNumber)
+   }
+   val needsShipment = needsShipmentInformation(order, shipments, numbers)
+@@ -1989,5 +1994,5 @@
+
+   }
+   if (shipments.isEmpty()) Text("Awaiting shipping information", style = MaterialTheme.typography.bodySmall)
+-  else shipments.forEach { ship -> numbers.filter { it.shipmentId == ship.id }.forEach { number -> Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(number.carrier); Text(number.number, style = MaterialTheme.typography.bodySmall); CopyButton("Tracking number", number.number) }; if(number.trackingUrl.isNotBlank()) TextButton(onClick = { open(number.trackingUrl) }) { Text("View Tracking ↗") } } }
++  else shipments.forEach { ship -> numbers.filter { it.shipmentId == ship.id }.forEach { number -> Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(number.carrier); Text(number.number, style = MaterialTheme.typography.bodySmall) }; if(number.trackingUrl.isNotBlank()) TextButton(onClick = { open(number.trackingUrl) }) { Text("View Tracking ↗") } } }
+   } }
+   if(products.isNotEmpty()) TextButton(onClick = { showProducts = true }) { Text("▣ Products (${products.size})") }
+@@ -2013,5 +2018,5 @@
+
+    SelectionContainer { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+     Text("Retailer: ${order.marketplace}")
+-    Row(verticalAlignment = Alignment.CenterVertically) { Text("Order number: ${order.orderNumber}", Modifier.weight(1f)); CopyButton("Order number", order.orderNumber) }
++    Row(verticalAlignment = Alignment.CenterVertically) { Text("Order number: ${order.orderNumber}", Modifier.weight(1f)) }
+     Text("Placed: $placedLabel")
+     Text("Status: ${order.status}")
+@@ -2019,7 +2024,6 @@
+
+     Text("Order last changed: ${dateTimeText(order.statusUpdatedAt)}", style = MaterialTheme.typography.bodySmall)
+     if(order.notes.isNotBlank()) Text("Notes: ${order.notes}")
+-    if(order.orderUrl.isNotBlank()) Row(verticalAlignment = Alignment.CenterVertically) { Text("Order URL: ${order.orderUrl}", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall); CopyButton("Order URL", order.orderUrl) }
++    if(order.orderUrl.isNotBlank()) Row(verticalAlignment = Alignment.CenterVertically) { Text("Order URL: ${order.orderUrl}", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall) }
+    } }
+-   OutlinedButton(onClick = { copyToClipboard(context, "Order details", orderCopyText(order, placedLabel, itemsText)) }) { Text("Copy order details") }
+    shipments.forEachIndexed { i, shipment ->
+     var showEvents by remember { mutableStateOf(false) }
+@@ -2094,5 +2098,4 @@
+
+  lastChecked: Long? = null, onUpdate: (() -> Unit)? = null
+ ) {
+- val context = LocalContext.current
+  var expanded by remember { mutableStateOf(false) }
+  var editing by remember { mutableStateOf(false) }
+@@ -2113,10 +2116,12 @@
+
+   Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    SelectionContainer { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+-   Text("${shipment.title.ifBlank { order?.let { "${it.marketplace} · ${it.name}" } ?: "Standalone Shipment" }} · ${canonicalShipmentStatus(shipment.status)}", style = MaterialTheme.typography.titleMedium)
++   Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
++   Text("${shipment.title.ifBlank { order?.let { "${it.marketplace} · ${it.name}" } ?: "Standalone Shipment" }} · ${canonicalShipmentStatus(shipment.status)}", style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
++    CopyDetailsButton("Copy shipment details", shipmentCopyFields(shipment, tracking, order, lastChecked, formatDate = { dateText(it) }, formatTime = { dateTimeText(it) }))
++   }
+    if(order != null) Row(verticalAlignment = Alignment.CenterVertically) {
+     Text("Order: ${order.marketplace} · #${order.orderNumber}${if(order.archived) " (archived)" else ""} · ${order.status}", style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+-    CopyButton("Order number", order.orderNumber)
+-   }
+-   Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(primary?.carrier ?: shipment.carrier); Text(primary?.number ?: "No tracking number"); CopyButton("Tracking number", primary?.number.orEmpty()) }
++    }
++   Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(primary?.carrier ?: shipment.carrier); Text(primary?.number ?: "No tracking number") }
+    Text("Shipped: ${dateText(shipment.shippedAt)} · Estimated delivery: ${dateText(shipment.estimatedDeliveryAt)}", style = MaterialTheme.typography.bodySmall)
+    Text("Status updated: ${dateTimeText(shipment.statusUpdatedAt)} · Last checked: ${lastChecked?.let { dateTimeText(it) } ?: "Not checked yet"}", style = MaterialTheme.typography.labelSmall)
+@@ -2136,9 +2141,8 @@
+
+     SelectionContainer { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+      if(order != null) Text("Retailer: ${order.marketplace}")
+-     if(order != null) Row(verticalAlignment = Alignment.CenterVertically) { Text("Order number: ${order.orderNumber}", Modifier.weight(1f)); CopyButton("Order number", order.orderNumber) }
+-     tracking.forEach { t -> Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(t.carrier); Text("${t.number} (${t.role})", style = MaterialTheme.typography.bodySmall); CopyButton("Tracking number", t.number) } }
+-     if(primary != null && primary.trackingUrl.isNotBlank()) Row(verticalAlignment = Alignment.CenterVertically) { Text("Tracking URL: ${primary.trackingUrl}", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall); CopyButton("Tracking URL", primary.trackingUrl) }
++     if(order != null) Row(verticalAlignment = Alignment.CenterVertically) { Text("Order number: ${order.orderNumber}", Modifier.weight(1f)) }
++     tracking.forEach { t -> Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) { CarrierBadge(t.carrier); Text("${t.number} (${t.role})", style = MaterialTheme.typography.bodySmall) } }
++     if(primary != null && primary.trackingUrl.isNotBlank()) Row(verticalAlignment = Alignment.CenterVertically) { Text("Tracking URL: ${primary.trackingUrl}", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall) }
+     } }
+-    OutlinedButton(onClick = { copyToClipboard(context, "Shipment details", shipmentCopyText(shipment, tracking, order, dateText(shipment.shippedAt), dateText(shipment.estimatedDeliveryAt))) }) { Text("Copy shipment details") }
+     Text("Tracking history (newest first)", style = MaterialTheme.typography.titleSmall)
+     if(events.isEmpty()) Text("No tracking events yet. Live updates require Phase 3.", style = MaterialTheme.typography.bodySmall)

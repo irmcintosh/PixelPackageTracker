@@ -1,0 +1,9 @@
+gradle.projectsEvaluated {
+    def probeNames = ['installSafetyProbe', 'uninstallSafetyProbe', 'connectedSafetyProbe', 'disposableSafetyAndroidTest']
+    probeNames.each { probe ->
+        rootProject.tasks.register(probe) {
+            doLast { throw new GradleException('SAFETY PROBE ACTION REACHED: guard failed') }
+        }
+    }
+    rootProject.tasks.register('safetyProbeAlias') { dependsOn(probeNames) }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "path": "app/src/main/res/drawable/ic_launcher_monochrome.xml",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/ic_launcher_foreground.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-hdpi/ic_launcher.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-mdpi/ic_launcher.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  },
+  {
+    "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+    "referenceExists": true,
+    "identicalToReference": true
+  }
+]
