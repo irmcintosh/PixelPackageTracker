@@ -1,0 +1,29 @@
+﻿{
+    "file":  "C:\\Users\\Ian12724\\Downloads\\PixelPackageTracker_Android_Setup_Skill\\PixelPackageTracker\\PixelPackageTracker_v1.0.5_WP02_InboxOnly_Review_Fix\\dist\\PixelTrack-v1.0.9.apk",
+    "source":  "C:\\Users\\Ian12724\\Downloads\\PixelPackageTracker_Android_Setup_Skill\\PixelPackageTracker\\PixelPackageTracker_v1.0.5_WP02_InboxOnly_Review_Fix\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "packageId":  "com.example.pixelpackagetracker",
+    "launcher":  "com.example.pixelpackagetracker.MainActivity",
+    "label":  "Pixel Tracker",
+    "versionName":  "1.0.5-dev",
+    "versionCode":  "29",
+    "bytes":  13685709,
+    "apkLastWriteTimeUtc":  "2026-10-27T21:37:48.9840533Z",
+    "verifiedAtUtc":  "2026-10-27T21:37:55.7950781Z",
+    "sha256":  "b7a85d12adfe0473fdc59c06446a2297f53cb75641e0da9790fc5fc265873db8",
+    "signingCertificateSha256":  "b526e739f5be7935e957e9f7d9e3126922913e7628417db208ed2d15f57b39c7",
+    "originalIconPngsVerified":  11,
+    "featureMarkersVerified":  [
+                                   "reconcileArchives",
+                                   "deleteArchived",
+                                   "GmailAccountsSection",
+                                   "Disconnect Gmail session?",
+                                   "Delete all archived records?",
+                                   "Archive shipment",
+                                   "Delete shipment",
+                                   "Shipment information needed",
+                                   "Copy shipment details",
+                                   "CopySelectionDialog",
+                                   "formatCopySelection"
+                               ],
+    "installedOnDevice":  false
+}
